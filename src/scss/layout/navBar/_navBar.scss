@@ -1,0 +1,235 @@
+@use '../../abstracts' as *;
+
+nav {
+
+    padding: 20px 40px;
+    width: 100%;
+    height: 70px;
+    @include spaceBetween;
+    position:fixed;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+    transition: all .2s;
+    z-index: 999;
+
+    .nav_left {
+        display: flex;
+        gap: 40px;
+
+        h2 {
+            height: 100%;
+            
+            a {
+                display: inline-block;
+                height: 100%;
+
+                img {
+                    height: 100%;
+                }
+            }
+            
+        }
+
+        .menu {
+
+            .menu_open {
+                display: none;
+            }
+        
+            ul {
+
+                height: 100%;
+                display: flex;
+                gap: 20px;
+
+
+                li {
+
+                    height: 100%;
+
+                    a{
+                        padding: 0 5px;
+                        height: 100%;
+                        @include alignItemCenter;
+                        font-size: 16px;
+
+                        &:hover {
+                            span {
+                                color: #b5b5b5;
+                                transition: 0.3s ease-in-out;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .nav_right {
+        .search_box {
+            padding: 3px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            
+            
+
+            .search_icon{
+                width: 30px;
+                height: 100%
+            }
+
+            .input_box {
+
+                display: none;
+            
+            }
+
+            .search_reset {
+                
+               display: none;
+            }
+        }
+
+        .search_box.active {
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: #000;
+
+            .input_box {
+                padding: 2px 0;
+                height: 100%;
+                display: block;
+                
+                input {
+                    height: 100%;
+                    display: inline-block;
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                    font-size: 16px;
+                }
+            }
+
+            .search_reset {
+                
+                width: 25px;
+                height: 25px;
+                display: inline-block;
+                opacity: 0;
+
+                transition: all .3s ease-in-out;
+                img {width: 100%;}
+            }
+            .search_reset.on {
+                opacity: 1;
+            }
+        }  
+    }  
+}
+
+nav.on {
+    background-image: none;
+    background: #141414;
+}
+
+nav.off {
+    display: none;
+}
+
+@include tablet2 {
+    nav {
+        padding: 15px 35px;
+        height: 60px;
+
+        .nav_left {
+
+            gap: 25px;
+
+            .menu ul {
+                gap: 15px; 
+
+                li a {
+                    font-size: 14px;
+                }
+            }
+
+        }
+    }
+}
+
+@include tablet1 {
+    nav {
+        padding: 15px 35px;
+        height: 60px;
+
+        .nav_left {
+
+            gap: 20px;
+            
+            .menu {
+                position: relative;
+
+                .menu_open {
+                    display: inline-block;
+                    height: 100%;
+                }
+            
+                ul {
+                    display: none;
+                    padding: 15px 0;
+                    width: 200px;
+                    left: 50%;
+                    top: 38px;
+                    transform: translateX(-50%);
+                    height: unset;
+                    position: absolute;
+                    flex-direction: column;
+                    gap: 10px; 
+                    background-color: rgba(0, 0, 0, 0.7);
+    
+                    li {
+                        height: unset;
+                        a {
+                            padding: 0 3px;
+                            font-size: 14px;
+                            justify-content: center;
+                        }
+                    }
+                }
+                ul.on {
+                    display: flex;
+                }
+            }
+         
+            h2 a {
+                height: 80%;
+                vertical-align: -webkit-baseline-middle;
+            }
+        }
+
+        .nav_right.mobile {
+            width: calc(100% - 70px);
+            height: 30px;
+            position: absolute;
+
+            .search_box.active {
+                .input_box {
+                    width: calc(100% - 71px);
+
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+

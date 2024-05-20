@@ -1,0 +1,5 @@
+//abstracts폴더 안에 scss파일들을 합쳐서 내보냄
+//사용할 땐 @use '../abstracts' as *;
+
+@forward 'mixins';
+@forward 'Variables';

@@ -1,0 +1,107 @@
+@use '../../abstracts' as *;
+
+
+.footer {
+    padding: 0 0 60px;
+    background-color: #141414;
+
+    .footer_inner {
+        margin: 0 auto;
+        max-width: 1000px;
+
+
+        .linked_sns {
+            display: flex;
+            gap: 40px;
+            a {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .linked_member {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px 0;
+            li {
+
+                flex: 25%;
+
+                a {
+                    font-size: 14px;
+                    font-weight: 300;
+                    color: grey;
+                }
+            }
+        }
+
+        .copylight {
+            margin-top: 50px;
+
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                color: grey;
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+
+@include desktop1 {
+    .footer {
+        .footer_inner {
+            padding: 0 45px;
+            max-width: unset;
+            width:100%;                   
+
+        }
+    }
+}
+
+@include tablet2 {
+    .footer {
+        .footer_inner {
+            padding: 0 35px;
+            
+            .linked_member {
+                margin-top: 36px;
+
+                li {
+                    a{
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .copylight {
+                p {
+                   font-size: 13px ;
+                }
+
+            }
+        }
+
+        
+    }
+}
+
+@include mobile{
+
+    .footer {
+
+        .footer_inner {
+            .linked_member {
+                li {
+                    flex: 50%;
+                }
+            }
+        }
+
+    }
+
+    
+} 

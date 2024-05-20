@@ -1,0 +1,336 @@
+@use '../../abstracts' as *;
+
+.preview {
+    
+    width: 100%;
+    height: 39.25vw;
+    position: relative;
+    background-color: #000;
+    
+
+    .inner_preview {
+        @include center;
+        height: 100%;
+
+        .iframe_wrap {
+
+            @include center;
+
+            width: 850px;
+            height: 480px;
+        }
+    }
+
+    .exit_preview {
+
+        @include circleButton;
+        position: absolute;
+        right: 8%;
+        top: 10%;
+        z-index: 1001;
+
+        .img_wrap {
+            width: 24px;
+            height: 24px;
+        }
+        
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 39.25vw;
+    position: relative;
+
+    .info_box {
+
+        width: 400px;
+        position: absolute;
+        left: 60px;
+        bottom: 30%;
+
+        .content_title {
+            margin-bottom: 30px;
+            font-size: 52px;
+            font-weight: 700;
+            word-break: keep-all;
+        }
+
+        .content_introduce {
+            font-size: 18px;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 30px;
+
+           
+        }
+
+        .button_wrap {
+            display: flex;
+            gap: 15px;
+
+            .preview_play {
+                padding: $button-padding-type01;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                
+                background-color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+
+                .img_wrap {
+                    width: 24px;
+                    height: 24px;
+                }
+
+
+                span {
+                    color: #000;
+                }
+
+                &:hover {
+                    background:  $button-white-hover;
+                }
+            }
+
+            .detail_view {
+                padding: $button-padding-type01;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                color: #fff;
+                background-color: rgba(109, 109, 110, 0.7);
+                border-radius: 5px;
+                cursor: pointer;
+
+                .img_wrap {
+                    width: 24px;
+                    height: 24px;
+                }
+                
+
+                &:hover {
+                    background: $button-gray-hover;
+                }
+                 
+            }
+        }
+        
+
+    }
+}
+
+
+@include desktop2 {
+    .preview .inner_preview {
+        .iframe_wrap {
+            @include center;
+            width: 700px;
+            height: 350px;
+        }    
+    }
+
+    .banner {
+
+       
+
+        .info_box {
+            .content_title {
+                font-size: 40px;
+            }   
+
+            .content_introduce {
+                font-size: 15px;
+            }
+
+            .button_wrap {
+                gap: 12px;
+
+                .preview_play,  .detail_view  {
+                    padding: 8px 12px;
+                    font-size: 16px;
+
+                    .img_wrap {
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                
+            }
+
+        }
+    }
+}
+
+
+@include desktop1 {
+
+    .preview .inner_preview {
+        .iframe_wrap {
+            @include center;
+            width: 550px;
+            height: 260px;
+        }    
+    }
+
+    .banner {
+        .info_box {
+            left: 45px;
+            .content_title {
+                margin-bottom: 20px;
+                font-size: 28px;
+
+            }   
+
+            .content_introduce {
+                margin-bottom: 20px;
+                font-size: 14px;
+            }
+
+            .button_wrap {
+                gap: 10px;
+
+                .preview_play,  .detail_view  {
+                    padding: 6px 8px;
+                    font-size: 14px;
+
+                    .img_wrap {
+                        width: 16px;
+                        height: 16px;
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+
+@include tablet2 {
+
+        .preview {
+            height: 70.25vw;
+        }   
+
+        .banner {
+            height: 70.25vw;
+
+            .info_box {
+                left: 35px;
+            }
+        }
+}
+
+@include tablet1 {
+
+    .preview {
+        height: 90.25vw;
+
+        .inner_preview {
+            .iframe_wrap {
+                width: 100%;
+                height: 45vw;
+            }    
+        }
+
+    
+        .exit_preview .img_wrap {
+                width: 22px;
+                height: 22px;
+        }
+            
+        
+    }   
+
+    .banner {
+        height: 90.25vw;
+
+        .info_box {
+            .content_title {
+                margin-bottom: 16px;
+                font-size: 24px;
+
+            }   
+
+            .content_introduce {
+                margin-bottom: 16px;
+                font-size: 13px;
+            }
+
+            .button_wrap {
+                gap: 10px;
+
+                .preview_play,  .detail_view  {
+                    padding: 6px 8px;
+                    font-size: 14px;
+
+                    .img_wrap {
+                        width: 16px;
+                        height: 16px;
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+
+
+@include mobile {
+
+    .preview {
+        height: 160.25vw;
+
+        .inner_preview {
+            .iframe_wrap {
+                width: 100%;
+                height: 45vw;
+            }    
+        }
+
+        .exit_preview .img_wrap {
+            width: 18px;
+            height: 18px;
+        }
+    }   
+
+    .banner {
+        height: 160.25vw;
+
+        .info_box {
+            width: 70%;
+            left: 20px;
+
+            .content_title {
+                margin-bottom: 12px;
+                font-size: 18px;
+
+            }   
+
+            .content_introduce {
+                margin-bottom: 12px;
+                font-size: 13px;
+            }
+
+            .button_wrap {
+                gap: 10px;
+
+                .preview_play,  .detail_view  {
+                    font-size: 12px;
+
+                    .img_wrap {
+                        width: 14px;
+                        height: 14px;
+                    }
+
+                }
+            }
+
+        }
+    }
+} 
+

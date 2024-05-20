@@ -1,0 +1,62 @@
+@use '../abstracts' as *;
+
+
+.container.search {
+
+    padding: 70px 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #141414;
+
+    .inner {
+        
+        padding: 100px 60px 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .movie {
+            width: calc(25% - 10px);
+            border-radius: 5px;
+            transition: all .3s ease-in-out;
+            img {
+                width: 100%;
+            }
+
+
+            &:hover {
+                outline: 2px solid #fff;
+                transform: scale(1.2);
+            }
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+@include tablet1 {
+    .container.search {
+        padding: 60px 0;
+        .inner {
+            padding: 60px 35px;
+        }
+    }
+}
+
+
+@include mobile {
+    .container.search {
+        padding: 40px 0;
+        .inner {
+            padding: 60px 35px;
+            gap: 5px;
+            .movie {
+                width: calc(33.33% - 3.5px);
+            }
+        }
+    }
+}
