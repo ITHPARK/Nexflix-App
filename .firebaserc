@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "react-netflix-app-994a3"
-  }
+    "default": "react-netflix-app-994a3",
+    "netfilx": "react-netflix-app-994a3"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
