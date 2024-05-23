@@ -11,7 +11,7 @@ const SearchPage = () => {
 
   
   const useQuery = () => {
-    //해당 코드는 현재 url에서 search 부분에 q=asdasd를 반환해줄것이다.
+    //해당 코드는 현재 url에서 search 부분에 q=asdasd를 반환해준다.
     return new URLSearchParams(useLocation().search);
   }
 

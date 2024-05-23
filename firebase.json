@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "react-netflix-65fce",
     "public": "build",
     "ignore": [
       "firebase.json",

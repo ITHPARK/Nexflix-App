@@ -6,8 +6,10 @@ import useResizeWidth from '../hooks/useResizeWidth';
 
 const Nav = () => {
 
-
+    //input 노출, 비노출 처리를 위한 state
     const [inputState, setInputState] = useState(false);
+
+    //검색어 state
     const [searchVal, setSearchVal] = useState("");
     const [wScrollY, setWScrollY] = useState(false);
     const [navOn, setNavOn] = useState(false);
@@ -30,35 +32,39 @@ const Nav = () => {
         }
     },[]);
 
+    //input 노출, 비노출 처리를 위한 함수
     const handleClick =() => {
         if(inputState){
             navigate("/");
         }
         setInputState(!inputState);
+
+        //검색어 초기화
         setSearchVal("");
         
     }
 
     const handleClickMobileMenuState = () => {
+        //모바일 네비 디자인 변경
         setMobileNavState(!mobileNavState);
     }
 
     const debouncedSearchVal = useDebounce(searchVal, 1000);
 
+    //검색어 입력시 검색 결과 페이지로 이동하는 함수
     const handleChange = (e) => { 
         setSearchVal(e.target.value);
 
         //검색어를 입력할 때 마다 /search 경로로 이동시켜줌
         navigate(`/search?q=${e.target.value}`);
-
     }
 
+    //x버튼 누르면 검색어가 사라지는 함수
     const handleSearchReset = () => {
         setSearchVal("");
-        
-        
     }
 
+    //일정 스크롤 이상부터는 네비디자인이 바뀜
     window.addEventListener("scroll", ()=> {
         if(window.scrollY > 50) {
             setWScrollY(true);

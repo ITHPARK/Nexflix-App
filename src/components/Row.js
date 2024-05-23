@@ -19,6 +19,7 @@ const Row = ({title, id, getUrl }) => {
   const [selectMovie, setSelectMovie] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
+  //api 호출
   const fetchMovies = useCallback(async () => {
     const response = await axios.get(getUrl);
       setMovies(response.data.results);
@@ -29,8 +30,11 @@ const Row = ({title, id, getUrl }) => {
   }, [fetchMovies]); // getUrl이 변경될 때마다 데이터를 다시 가져옴
 
 
+  //모달창 열기
   const hadleModalOpen = (items) => {
     setModalOpen(true);
+
+    //내가 선택한 영화의 정보를 전달
     setSelectMovie(items);
   }
 
