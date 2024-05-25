@@ -1,8 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+## 리액트 넷플릭스 클론코딩 앱
 
 In the project directory, you can run:
 
