@@ -1,6 +1,8 @@
 ## 리액트 넷플릭스 클론코딩 앱
 
-In the project directory, you can run:
+*개인 프로젝트
+
+---
 
 ### `npm start`
 
