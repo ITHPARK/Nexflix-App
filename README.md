@@ -1,67 +1,121 @@
-## 프로젝트 
+# :pushpin: 리액트 넷플릿스 클론코딩 앱
+> TMDB(The Movie DB Api)를 활용한 넷플릭스 앱. </br>
+> URL: [https://react-netflix-65fce.web.app/](https://react-netflix-65fce.web.app/) 
 
-### 리액트 넷플릭스 클론코딩 앱
+</br>
 
-+ 개인 프로젝트
-+ URL: <react-netflix-65fce.web.app>
+## 1. 참여 인원
+- 개인 프로젝트 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. 사용 기술
+#### `Front-end`
+  - React.js
+  - Sass
 
-### `npm test`
+</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 3. 핵심 기능
+이 서비스의 핵심 기능은 인기 영화, TOP20 영화, 장르 영화 등의 정보, 평점 예고편의 정보를 제공합니다.
+사용자는 영화 이미지를 검색하거나 메인 페이지에서 영화를 클릭하시면 상세 정보를 확인하실 수 있습니다.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 4. 프로젝트 제작을 하면서 느낀점
+### SASS를 활용
+- CSS 전처리기 SASS를 처음으로 프로젝트에 활용하며 mixins로 css 일부 레이아웃을 모듈화 또는 반응형 셋팅을 네이밍을 하여 설정해 가독성을 높이고, 코드의 중복을 줄이고, 유지보수를 쉽게 하는 편리함을 느낄 수 있었습니다.
 
-### `npm run eject`
+### Custom Hooks의 편리함 
+- 리액트에서 기본적으로 제공하는 useState, useEffect 등의 베이직 hooks가 아닌 특정 요소 외부를 클릭했을 때 특정요소를 닫거나, 입력란 입력을 할 때 한글자 입력할 때마다 데이터를 가지고 오는게 아닌 입력후 일정 설정한 시간 후에 입력란의 값을 할당
+하게 할 수있는 custom hook를 제작하여 여러 컴포넌트에서 import해서 사용 할 수 있었음에 편리함을 느꼈습니다.
+  
+ ```
+//입력후 일정 설정한 시간 후에 입력란의 값을 할당
+import React, {useState, useEffect} from 'react';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+const useDebounce = (value, delay) => {
+    const [debounceVal, setDebounceVal] = useState("");
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    useEffect(() => {
+      const timer = setTimeout(()=> {
+        setDebounceVal(value);
+      }, delay);
+    
+      return () => {
+        clearTimeout(timer);
+      }
+    }, [value]);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    return debounceVal;
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default useDebounce;
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+//모달창 밖을 클릭했을 때 모달을 닫게하는 hooks
+import React, { useEffect, useState, useCallback, useRef, }  from 'react'
 
-### Code Splitting
+export const useOnClickOutside = (ref, handler) => {
+    useEffect(() => {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        //modal밖을 클릭했을 때 모달을 닫게 해주는 함수
+        const listener = (event) => {
+           
+            //현재 클릭한 요소의 ref가 존재하지 않거나 ref의 자식 요소면 모달을 안 닫는다.
+            if(!ref.current || ref.current.contains(event.target)) {
+                return;
+            }
 
-### Analyzing the Bundle Size
+            //모달 밖에 요소니 모달을 닫아준다.
+            handler();
+        };
+        
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      }
+    }, [ref, handler])
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
+```
+//화면 리사이즈를 감지하는 hooks
+import React, {useState, useEffect, } from 'react'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+const useResizeWidth = () => {
 
-### Advanced Configuration
+    const [resizeWidth, setResizeWidth] = useState(window.innerWidth);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    useEffect(() => {
+      const handleResize =() => {
+        setResizeWidth(window.innerWidth);
+      }
+  
+      //ResizeObserver는 브라우저api로 화면의 크기 변화를 감지하는 기능이다.
+      //화면 크기 변화가 감지되면 handleResize함수를 실행한다.
+      const resizeObserver = new ResizeObserver(handleResize);
+  
+      //observe는 감지할 대상을 지정하는것이다.
+      resizeObserver.observe(document.documentElement);
+  
+      return () => {
+        //컴포넌트 언마운트 될 때 지정된 관찰대상을 해제한다.
+        resizeObserver.disconnect();
+      }
+    }, [])
+    
+    return resizeWidth;
+}
 
-### Deployment
+export default useResizeWidth
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
