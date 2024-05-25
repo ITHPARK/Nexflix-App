@@ -3,7 +3,7 @@
 ### 리액트 넷플릭스 클론코딩 앱
 
 + 개인 프로젝트
-+ URL: react-netflix-65fce.web.app
++ URL: <react-netflix-65fce.web.app>
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
