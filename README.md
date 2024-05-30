@@ -1,4 +1,4 @@
-# :pushpin: 리액트 넷플릿스 클론코딩 앱
+# :pushpin: 리액트 넷플릿스앱
 > TMDB(The Movie DB Api)를 활용한 넷플릭스 앱. </br>
 > URL: [https://react-netflix-65fce.web.app/](https://react-netflix-65fce.web.app/) 
 
